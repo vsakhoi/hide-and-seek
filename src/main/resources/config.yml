@@ -1,0 +1,52 @@
+# ===== Hide and Seek =====
+# Có thể chỉnh tay file này hoặc dùng lệnh /hs setlobby, /hs setspawn
+settings:
+  min-players: 2          # tối thiểu để bắt đầu đếm ngược
+  max-players: 10         # tối đa mỗi trận
+  full-seekers-at: 10     # đủ số người này trở lên -> dùng seekers-full
+  seekers-full: 2         # số người tìm khi đủ người
+  seekers-low: 1          # số người tìm khi thiếu người
+  lobby-countdown: 20     # giây đếm ngược ở lobby
+  hide-time: 30           # giây cho người trốn đi trốn (người tìm bị đóng băng + mù)
+  seek-time: 300          # giây tìm kiếm
+  end-delay: 10           # giây chờ sau khi kết thúc rồi về lobby
+  tnt:
+    damage: 7.0           # sát thương TNT lên người trốn (20 = 10 tim)
+    fuse-ticks: 25        # thời gian nổ (20 tick = 1s)
+    speed: 1.5            # tốc độ bắn
+    power: 3.0            # bán kính nổ
+    cooldown-ms: 1500     # hồi chiêu súng
+  # block không được dùng để biến hình
+  blacklist:
+    - BARRIER
+    - STRUCTURE_BLOCK
+    - JIGSAW
+    - COMMAND_BLOCK
+    - CHAIN_COMMAND_BLOCK
+    - REPEATING_COMMAND_BLOCK
+    - LIGHT
+    - SPAWNER
+    - TRIAL_SPAWNER
+    - VAULT
+    - BEDROCK
+    - REINFORCED_DEEPSLATE
+
+# Lobby (đặt bằng /hs setlobby)
+lobby: {}
+
+# 3 map. Đặt vị trí bằng /hs setspawn <1|2|3> <hider|seeker>
+# (mỗi vị trí lưu cả tên world, nên world của map phải tồn tại trong thư mục server)
+maps:
+  map1:
+    name: "Map 1"
+  map2:
+    name: "Map 2"
+  map3:
+    name: "Map 3"
+
+# Resource pack tự gửi cho người chơi khi vào server
+# Up HideSeekGun.zip lên GitHub, dán link raw vào url, sha1 lấy bằng: Get-FileHash HideSeekGun.zip -Algorithm SHA1
+resource-pack:
+  url: ""
+  sha1: ""
+  required: false

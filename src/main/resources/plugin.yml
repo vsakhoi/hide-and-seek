@@ -1,0 +1,13 @@
+name: HideSeek
+version: 1.0.0
+main: vn.hideseek.HideSeekPlugin
+api-version: '26.2'
+description: Hide and seek - hider bien thanh block
+commands:
+  hs:
+    description: Lenh Hide and Seek
+    aliases: [hideseek]
+permissions:
+  hs.admin:
+    description: Quan tri Hide and Seek
+    default: op

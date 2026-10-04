@@ -1,0 +1,6 @@
+build/
+.gradle/
+.idea/
+*.class
+Create Guns*.zip
+resourcepack/
