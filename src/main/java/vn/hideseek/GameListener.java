@@ -41,9 +41,9 @@ public final class GameListener implements Listener {
 
     private Game game() { return plugin.game(); }
 
-    /** Admin bật /hs build + creative mới được sửa map. */
+    /** Admin + creative có thể sửa map. */
     private boolean canBuild(Player p) {
-        return p.hasPermission("hs.admin") && game().isBuilder(p.getUniqueId()) && p.getGameMode() == GameMode.CREATIVE;
+        return p.hasPermission("hs.admin") && p.getGameMode() == GameMode.CREATIVE;
     }
 
     // ---------- join / quit ----------

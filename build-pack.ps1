@@ -39,5 +39,14 @@ Copy-Item "$src\assets\cgm\sounds\item\pistol\fire.ogg" "$ns\sounds\gun\fire.ogg
  (New-Object Text.UTF8Encoding $false))
 
 Remove-Item $zip -Force -ErrorAction SilentlyContinue
-Compress-Archive -Path "$out\*" -DestinationPath $zip
+# Không dùng Compress-Archive: nó ghi đường dẫn bằng '\' nên Minecraft không đọc được pack
+Add-Type -AssemblyName System.IO.Compression
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$za = [IO.Compression.ZipFile]::Open($zip, [IO.Compression.ZipArchiveMode]::Create)
+Get-ChildItem $out -Recurse -File | ForEach-Object {
+    $rel = $_.FullName.Substring($out.Length + 1).Replace('\', '/')
+    [void][IO.Compression.ZipFileExtensions]::CreateEntryFromFile($za, $_.FullName, $rel)
+}
+$za.Dispose()
 Write-Host "OK -> $zip"
+Write-Host ("SHA1 = " + (Get-FileHash $zip -Algorithm SHA1).Hash.ToLower())
